@@ -9,7 +9,7 @@ export default class NavComp extends Component {
         return (
             <Navbar expand="lg" className="bg-dark-subtle">
       <Container>
-        <Navbar.Brand href="#home">ImgSteg</Navbar.Brand>
+        <Navbar.Brand href="#home">Steg</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
