@@ -1,0 +1,22 @@
+
+
+.form_btn{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #1475cf;
+    height: 300px;
+    width: 500px;
+    cursor: pointer;
+    border-radius: 5px;
+    align-content: center;
+
+};
+
+.form_img{
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}

@@ -9,20 +9,14 @@ import AppRoutes from './Approutes';
 // import Decode from './components/Decode';
 
 
+
 function App() {
   return (
     <div className="App">
         
      
   <NavComp />
-  {/* <AppRouter /> */}
- {/* <AppRoutes /> */}
- 
 
-{/* <Home />
-
-<UploadButton /> */}
-{/* <Decode />  */}
 
     </div>
   );
