@@ -3,21 +3,28 @@ import '../components/Styles/upload.css';
 import { MdCloudUpload, MdDelete } from 'react-icons/md'
 import { AiFillFileImage } from 'react-icons/ai'
 import Embedd from "./embed";
-import { Container } from "react-bootstrap";
+
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import Transfer from "./Sending";
+
+
+
 
 
 
 function UploadButton() {
+
+  const page = <Route path="/Transfer" element={<Transfer/>}/>
 
   const [image, setImage] = useState(null)
   const [filename, setFileName] = useState("No Selected File")
   return (
 
      
-    <div>
+    <div >
       
 
-      <main className="form_img">
+      <main>
           <form className="form_btn" 
             onClick={ () => document.querySelector(".input-field").click()}
           >
@@ -55,10 +62,20 @@ function UploadButton() {
           </section> */}
         </main>
 
+          <br />
+          <br />
 
+
+          <h1> Embed the Text</h1>
+          <br />
+          <p>Add the text below in the text box to hide the confidential message into the Image</p>
       <Embedd />
 
-      
+      <br />
+      <br />
+
+      <a href="{ page } "> Click here </a>
+
     </div>
  
    );

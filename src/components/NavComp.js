@@ -9,6 +9,7 @@ import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import Home from "./Steghome";
 import UploadButton from "./Encode";
 import Decode from "./Decode";
+import Transfer from "./Sending";
 
 export default class NavComp extends Component {
 
@@ -40,6 +41,7 @@ export default class NavComp extends Component {
     <Route path="/Uploadbutton" element={<UploadButton/>}/>
     <Route path="/Decode" element={<Decode/>}/>
     <Route path="/" element={<Home/>}/>
+    <Route path="/Transfer" element={<Transfer/>}/>
 
   </Routes>
 </div>

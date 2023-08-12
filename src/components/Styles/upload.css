@@ -12,11 +12,17 @@
     cursor: pointer;
     border-radius: 5px;
     align-content: center;
+    margin-left: 35%;
+    margin-top: 8%
+
+
 
 };
 
-.form_img{
+/* .formimg{
     align-content: center;
     justify-content: center;
-    display: flex;
-}
+    display: flex   ;
+    margin: auto;
+    background-color: red;
+} */
