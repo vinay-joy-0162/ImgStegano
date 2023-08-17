@@ -7,6 +7,8 @@ import Embedd from "./embed";
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import Transfer from "./Sending";
 
+// import { Link } from 'react-router';
+
 
 
 
@@ -14,7 +16,8 @@ import Transfer from "./Sending";
 
 function UploadButton() {
 
-  const page = <Route path="/Transfer" element={<Transfer/>}/>
+  // let page = <Route path="/Transfer" element={<Transfer/>}/>
+
 
   const [image, setImage] = useState(null)
   const [filename, setFileName] = useState("No Selected File")
@@ -74,8 +77,11 @@ function UploadButton() {
       <br />
       <br />
 
-      <a href="{ page } "> Click here </a>
+      {/* <Routes path="/Transfer" element={<Transfer/>} Click here /> */}
 
+          <h3>Click the below link for Sending the Image</h3>
+      <Link className="link" to="/Transfer">Transfer</Link>
+     
     </div>
  
    );
