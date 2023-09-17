@@ -26,10 +26,12 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { Container } from 'react-bootstrap';
 import embedd from './Styles/embedd.css';
 import Button from 'react-bootstrap/Button';
+import React, {useState, useEffect} from 'react';
 
-
+ // const [data, setdata] = useState{()}
 
 function SizesExample() {
+ 
   return (
     <Container>
       
