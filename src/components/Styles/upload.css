@@ -13,13 +13,30 @@
     border-radius: 5px;
     align-content: center;
     margin-left: 35%;
-    margin-top: 8%
+    margin-top: 5%
 
 
 
-};
+}
+.encode{
+    margin-top: 3%;
+    margin-right: 3%;
+    
+}
 
+.link{
+    margin-top: 2%;
+    margin-bottom: 8%;
+    font-size: 95%;
 
+  
+}
+
+.para{
+    font-size: 120%;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
 
 /* .formimg{
     align-content: center;

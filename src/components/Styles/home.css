@@ -1,0 +1,38 @@
+.title_1{
+    margin-top: 4%;
+    font-size: 250%;
+    font-family: Calibri ;
+
+
+}
+.title_2{
+    margin-top: 2%;
+    font-size: 250%;
+    font: bold;
+    
+    font-family: Calibri ;
+}
+.para_1{
+    font-size: 120%;
+    font-family: 'Times New Roman', Times, serif;
+    
+
+}
+.card{
+    margin-left:31%;
+    margin-top: 2%;
+  width: 50rem;
+  margin-bottom: auto;
+}
+
+.title_card{
+    font-size: 160%;
+    font-family: 'Times New Roman', Times, serif;
+    color:black;
+}
+
+.para_card{
+    font-size: 120%;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 5%;
+}

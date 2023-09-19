@@ -6,6 +6,7 @@ import Embedd from "./embed";
 
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import Transfer from "./Sending";
+import { Button, Container } from "react-bootstrap";
 
 // import { Link } from 'react-router';
 
@@ -24,10 +25,11 @@ function UploadButton() {
   return (
 
      
-    <div >
-      
+    <div>
+ 
 
       <main>
+        <h2 className="encode">Lets Encode!!</h2>
           <form className="form_btn" 
             onClick={ () => document.querySelector(".input-field").click()}
           >
@@ -69,9 +71,9 @@ function UploadButton() {
           <br />
 
 
-          <h1> Embed the Text</h1>
+          <h3> Hide the Text</h3>
           <br />
-          <p>Add the text below in the text box to hide the confidential message into the Image</p>
+          <p className="para">Add the text below in the text box to hide the confidential message into the Image</p>
       <Embedd />
 
       <br />
@@ -79,10 +81,14 @@ function UploadButton() {
 
       {/* <Routes path="/Transfer" element={<Transfer/>} Click here /> */}
 
-          <h3>Click the below link for Sending the Image</h3>
-      <Link className="link" to="/Transfer">Transfer</Link>
+          <h3 className="para">Click the link below for Sending the Image</h3>
+         
+   <Link className="link" to="/Transfer">Send</Link>
+   
      
     </div>
+    
+      
  
    );
 }

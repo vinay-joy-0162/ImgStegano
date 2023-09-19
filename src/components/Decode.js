@@ -19,7 +19,7 @@ function Decode () {
     const [filename, setFileName] = useState("No Selected File")
     return (
         <div className="Decode">
-            <h2>Lets decode!!</h2>
+            <h2 className="decode">Lets Decode!!</h2>
 
             <br />
           
