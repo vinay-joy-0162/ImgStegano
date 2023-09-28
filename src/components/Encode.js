@@ -6,7 +6,8 @@ import Embedd from "./embed";
 
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import Transfer from "./Sending";
-import { Button, Container } from "react-bootstrap";
+import axios from "axios";
+import { Button } from "react-bootstrap";
 
 // import { Link } from 'react-router';
 
@@ -22,73 +23,90 @@ function UploadButton() {
 
   const [image, setImage] = useState(null)
   const [filename, setFileName] = useState("No Selected File")
+
+  function onSubmit(e){
+    e.preventDefault();
+    axios.post('http://127.0.0.1:5000/encode', e.target).then((res) => {
+      console.log(res.data);
+
+      if(res.data.returnCode == 0){
+        window.alert("encoded");
+      }
+
+    });
+  }
+
   return (
-
+    
      
-    <div>
- 
+    <div >
 
-      <main>
-        <h2 className="encode">Lets Encode!!</h2>
-          <form className="form_btn" 
-            onClick={ () => document.querySelector(".input-field").click()}
+
+<h2 className="title">Encode</h2>
+
+
+          <form  className="form1"
+           onSubmit={onSubmit}
           >
-              <input type="file" accept='image/*' className="input-field" hidden
-              onChange={( { target: {files}}) => {
+              <input type="file" accept='image/*'  
+                onChange={( { target: {files}}) => {
 
-                files[0] && setFileName(files[0].name)
-                if(files){
-                  setImage(URL.createObjectURL(files[0]))
-                }
+                  files[0] && setFileName(files[0])
+                  if(files){
+                    setImage(URL.createObjectURL(files[0]))
+                  }
 
-              }} 
+                }} 
+          className="form-control"
+                name="file_ip"
               />
 
               {image ?
-                <img src={image} width={250} height={200} alt={filename} />
-                :
-                <>
-                <MdCloudUpload color="#1475cf" size={60} />
-                <p>Browse Image to Upload</p>
-                </>
-                
-            }
+                  <img className="img" src={image} width={400} height={400} alt={filename} />
+                  :
+                  <>
+                 
+                  </>
+                  
+              }
 
+
+            <br />
+            <br />
+
+
+            <h2 className="embed"> Embed the Text</h2>
+            <br />
+            <p>Add the text below in the text box to hide the confidential message into the Image</p>
+            {/* <Embedd /> */}
+            
+            <input className="input1" type="text" placeholder="Enter Text" name="text_ip" />
+
+            {/* // Define the string
+var decodedStringBtoA = 'Hello World!';
+ Encode the String
+var encodedStringBtoA = btoa(decodedStringBtoA);
+
+console.log(encodedStringBtoA); */}
+         
+            <br/>
+            <br/>
+{/* 
+            <input className="input_btn" type="submit" value="Encode" /> */}
+            <Button className="btn"  varaiant="Danger" type="submit" value="Encode">Embed</Button>
           </form>
 
-
-
-       
-          {/* <section>
-            <AiFillFileImage color="#1475cf" />
-            <span>
-              <MdDelete />
-            </span>
-          </section> */}
-        </main>
-
-          <br />
-          <br />
-
-
-          <h3> Hide the Text</h3>
-          <br />
-          <p className="para">Add the text below in the text box to hide the confidential message into the Image</p>
-      <Embedd />
+        
 
       <br />
       <br />
 
-      {/* <Routes path="/Transfer" element={<Transfer/>} Click here /> */}
-
-          <h3 className="para">Click the link below for Sending the Image</h3>
-         
-   <Link className="link" to="/Transfer">Send</Link>
    
+
+          <h3>Click the below link for Sending the Image</h3>
+      <Link className="link" to="/Transfer">Transfer</Link>
      
     </div>
-    
-      
  
    );
 }

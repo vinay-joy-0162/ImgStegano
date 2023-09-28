@@ -1,12 +1,18 @@
 # Import flask and datetime module for showing date and time
-from flask import Flask
+from flask import Flask, request, json
 import datetime
 from PIL import Image
-
+# from flask.ext.cors import CORS, cross_origin
+from flask_cors import CORS
+import logging
+from werkzeug.utils import secure_filename
 
 # Initializing flask app
 app = Flask(__name__)
 x = datetime.datetime.now()
+CORS(app)
+
+# @app.route('/foo', methods=['POST','OPTIONS'])
 
 def generate_Data(data):
     new_data = []
@@ -58,22 +64,26 @@ def encode_enc2(newimg, data):
         else:
             x += 1
             
-def encodeText(msg):
-    image = Image.open("img.jpg", 'r')
+def encodeText(msg, file_name):
+    if(len(file_name) <= 0):
+        app.logger.error("incorrect file")
+    # if(file_name.split(".")[1] != "jpg"):
+    #     app.logger.error("incorrect file, upload file with jpg extension")
+
+    image = Image.open(file_name, 'r')
     data = msg
     if (len(data) == 0):
 #       If user does not enter anything
         raise ValueError('Data is empty')
     newimg = image.copy()
     encode_enc2(newimg, data)
-    new_img_name = "new_img.png"
+    new_img_name = "new_" + file_name.split(".")[0] + ".png"
     newimg.save(new_img_name, str(new_img_name.split(".")[1].upper()))
-    # res = "Image stored: " + new_img_name
-	# print(res)
+    return 0
 
-def decode2():
-    img = "new_img.png"
-    print()
+def decode2(file_name):
+    img = file_name
+    app.logger.info(img)
     image = Image.open(img, 'r')
     image_data = iter(image.getdata())
     data = ''
@@ -91,34 +101,28 @@ def decode2():
         if pixels[-1] % 2 != 0:
             return data
 
-
 # Route for seeing a data
-@app.route('/encode')
+@app.route('/encode', methods=['POST'])
 def encode():
-	msg = "your message"
-	encodeText(msg)
-
-	# Returning an api for showing in reactjs
-
-	return {
-		
+    text = request.form['text_ip']
+    file_path = request.files["file_ip"]
+    app.logger.info("text : " + text)
+    file_path.save(secure_filename(file_path.filename))
+    file_name = file_path.filename
+    retCode = encodeText(text, file_name)
+    return {		
 		'status':"201",
-        "message":"success"
-		}
+        "message":"success", 
+        "returnCode" : retCode
+	}
 
 # Route for seeing a data
-@app.route('/decode')
+@app.route('/decode', methods=['POST'])
 def decodeAPI():
-
-	res = decode2()
-
-	# Returning an api for showing in reactjs
-
-	return {
-		
-		'status':"201",
-        "message":res
-		}
+    file_path = request.files["file_ip"]
+    file_path.save(secure_filename(file_path.filename))
+    response = {'data': decode2(file_path.filename)}
+    return response
 
 
 # Route for seeing a data
@@ -138,23 +142,3 @@ def get_time():
 # Running app
 if __name__ == '__main__':
 	app.run(debug=True)
-
-
-# import base64
-
-# sample_string = "Vinay Joy"
-# sample_string_bytes = sample_string.encode("ascii")
-
-# base64_bytes = base64.b64encode(sample_string_bytes)
-# base64_string = base64_bytes.decode("ascii")
-
-# print(f"Encoded string: {base64_string}")
-
-
-# base64_string =" VmluYXkgSm95"
-# base64_bytes = base64_string.encode("ascii")
-
-# sample_string_bytes = base64.b64decode(base64_bytes)
-# sample_string = sample_string_bytes.decode("ascii")
-
-# print(f"Decoded string: {sample_string}")

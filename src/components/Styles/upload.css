@@ -35,7 +35,6 @@
 .para{
     font-size: 120%;
     font-family: 'Times New Roman', Times, serif;
-    
 }
 
 /* .formimg{
@@ -45,3 +44,26 @@
     margin: auto;
     background-color: red;
 } */
+
+.form1{
+    margin-top: 3%;
+}
+.title{
+    margin-top: 5%;
+    font: bold;
+    font-size: 300%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.form-control{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.img{
+    margin-top: 4%;
+}
+.input_btn{
+    color: lightblue;
+}
